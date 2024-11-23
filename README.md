@@ -1,5 +1,6 @@
 # Data Visualization Agent with Generative AI
 This project demonstrates how to build a data visualization agent using OpenAI's GPT-4, LangChain, and Streamlit. The agent interacts with a BigQuery database to perform data analysis and generate charts and maps based on natural language queries.
+https://yia333.medium.com/leveraging-generative-ai-for-data-analytics-with-langchain-and-openai-ce95b1fbaff2
 
 ## Features
 - Natural Language Interface: Ask questions about your data using natural language.
