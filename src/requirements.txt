@@ -1,0 +1,16 @@
+streamlit
+lida
+pandas>=2.1.0
+plotly>=5.18.0
+python-dotenv>=1.0.0
+langchain
+langchain-core
+langchain-community
+langchain-openai
+langgraph
+tiktoken
+sqlalchemy
+sqlalchemy-utils
+pydantic>=2.5.3
+pyodbc>=4.0.35
+openai>=1.3.0

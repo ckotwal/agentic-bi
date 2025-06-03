@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Great — I’ll start by analyzing the schema defined in the `chinook.ddl` file. Then I’ll generate a set of realistic and varied natural language queries along with chart types to comprehensively test your NL-to-SQL charting application.
+
+### Step 1: Analyze the DDL
+
+Let me parse the `chinook.ddl` file and extract the schema first.
+
+
+The `chinook.ddl` file defines the schema of the [Chinook database](https://github.com/lerocha/chinook-database), a well-known sample database modeled after a digital media store (similar to iTunes). Here's a summary of the core tables and relationships it contains:
+
+---
+
+### ✅ **Key Tables and Fields**
+
+1. **Artist(ArtistId, Name)**
+2. **Album(AlbumId, Title, ArtistId)** — many-to-one with Artist
+3. **Track(TrackId, Name, AlbumId, MediaTypeId, GenreId, Composer, Milliseconds, Bytes, UnitPrice)**
+4. **Genre(GenreId, Name)**
+5. **MediaType(MediaTypeId, Name)**
+6. **Customer(CustomerId, FirstName, LastName, Country, Email, etc.)**
+7. **Invoice(InvoiceId, CustomerId, InvoiceDate, BillingCountry, Total)** — many-to-one with Customer
+8. **InvoiceLine(InvoiceLineId, InvoiceId, TrackId, UnitPrice, Quantity)** — many-to-one with Invoice and Track
+9. **Playlist(PlaylistId, Name)**
+10. **PlaylistTrack(PlaylistId, TrackId)** — many-to-many via junction table
+11. **Employee(EmployeeId, ReportsTo, FirstName, LastName, Title, etc.)**
+
+---
+
+### ✅ **Realistic Natural Language Queries with Chart Types**
+
+Below is a diverse set of test queries for your app, with recommended visualizations:
+
+| Query # | Natural Language Query                                                   | Suggested Chart Type   |
+| ------- | ------------------------------------------------------------------------ | ---------------------- |
+| 1       | Show total sales per country.                                            | Bar Chart              |
+| 2       | Which genres have the most tracks?                                       | Bar Chart              |
+| 3       | Show the monthly revenue trend for 2012.                                 | Line Chart             |
+| 4       | Compare the number of tracks in each playlist.                           | Horizontal Bar Chart   |
+| 5       | What are the top 10 most purchased tracks?                               | Bar Chart              |
+| 6       | Show sales by employee (support agent).                                  | Pie Chart              |
+| 7       | What is the distribution of tracks by media type?                        | Pie Chart              |
+| 8       | Show total revenue by artist.                                            | Bar Chart              |
+| 9       | Average track length per genre.                                          | Box Plot               |
+| 10      | Invoice count over time.                                                 | Line Chart             |
+| 11      | Which albums generated the most revenue?                                 | Bar Chart              |
+| 12      | Number of invoices per customer.                                         | Histogram or Bar Chart |
+| 13      | Show customer distribution by country.                                   | Map or Choropleth      |
+| 14      | Total sales by genre over time.                                          | Stacked Area Chart     |
+| 15      | Number of tracks released by year (assuming a release date is inferred). | Bar Chart              |
+| 16      | Which employees manage the most customers?                               | Bar Chart              |
+| 17      | Correlation between track price and length.                              | Scatter Plot           |
+| 18      | Show sales trends per genre.                                             | Multi-line Chart       |
+| 19      | Compare revenue from top 5 customers.                                    | Pie Chart              |
+| 20      | Which customers bought the most different tracks?                        | Bar Chart              |
+
+---
+
+Would you like me to generate the corresponding SQL queries as well for each of these?
+
+
+</body>
+</html>
