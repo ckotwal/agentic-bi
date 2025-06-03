@@ -1,5 +1,6 @@
 # https://python.langchain.com/docs/integrations/tools/sql_database/
 #Name the employees and their total sales across years.  draw a bar chart of the results
+import os
 import json
 import pathlib
 from typing import Dict, Any, List, Optional, Iterator
@@ -30,7 +31,12 @@ class GenBIReactAgent:
         """
         # Initialize database connection
         if db_uri is None:
-            db_uri = "sqlite:///" + str(pathlib.Path(__file__).parent.parent.resolve() / "chinook.db")
+            DB_USER = os.getenv("DB_USER", "postgres")
+            DB_PASSWORD = os.getenv("DB_PASSWORD", "password12")
+            DB_HOST = os.getenv("DB_HOST", "db")
+            DB_PORT = os.getenv("DB_PORT", "5432")
+            DB_NAME = os.getenv("DB_NAME", "chinook")
+            db_uri = f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
         self.db = SQLDatabase.from_uri(db_uri)
         
         # Initialize language model
@@ -43,7 +49,7 @@ class GenBIReactAgent:
         prompt_template = hub.pull("langchain-ai/sql-agent-system-prompt")
         assert len(prompt_template.messages) == 1
         suffix = " Do not attempt to integrate any images or charts generated into your final response."
-        self.system_message = prompt_template.format(dialect="SQLite", top_k=30) + suffix
+        self.system_message = prompt_template.format(dialect="PostgreSQL", top_k=30) + suffix
         print(self.system_message)
         
         # Initialize visualization tools

@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "8501:8501"
+    environment:
+      - DB_USER=postgres
+      - DB_PASSWORD=password12
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=chinook
+    volumes:
+      - ./src:/app/src  # Optional: Mount src for local development
+
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=chinook
+      - POSTGRES_USER=postgres  # Ensure this matches DB_USER in 'app'
+      - POSTGRES_PASSWORD=password12
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./src/ddl/chinook.ddl:/docker-entrypoint-initdb.d/chinook.ddl
+    ports:
+      - "5432:5432" # Optional: Expose db port for direct access
+
+volumes:
+  postgres_data:
