@@ -1,61 +1,122 @@
-# Data Visualization Agent with Generative AI
-This project demonstrates how to build a data visualization agent using OpenAI's GPT-4, LangChain, and Streamlit. The agent interacts with a BigQuery database to perform data analysis and generate charts and maps based on natural language queries.
-https://yia333.medium.com/leveraging-generative-ai-for-data-analytics-with-langchain-and-openai-ce95b1fbaff2
+# AI-Powered Data Visualization Assistant
 
-## Features
-- Natural Language Interface: Ask questions about your data using natural language.
-- Automated SQL Generation: Converts natural language queries into SQL queries.
-- Dynamic Data Visualization: Recommends and generates appropriate visualizations (bar charts, line chart, pie charts, scatter plots, maps).
-- Real-Time Feedback: Provides real-time status updates in the Streamlit interface using custom event handlers.
-- Geographical Data Handling: Extracts coordinates from data for map visualizations.
+An intelligent data exploration tool that transforms natural language queries into interactive visualizations and insights. Built with Python, Streamlit, and modern AI technologies, this application helps users explore and understand their data through conversational interactions.
 
-## Prerequisites
-- Python 3.7 or later
-- Google Cloud Account: Access to a BigQuery database.
-- OpenAI API Key
+## ✨ Features
 
-## Installation
+- **Natural Language to Visualization**: Transform plain English questions into insightful visualizations
+- **Interactive Chat Interface**: Built with Streamlit for a seamless user experience
+- **Multiple Visualization Types**: Supports various chart types including bar, line, pie, and scatter plots
+- **SQL Query Generation**: Automatically generates and executes SQL queries based on user questions
+- **Entity Relationship (ER) Diagram Generation**: Visualize database schema and relationships
+- **Responsive Design**: Works with different screen sizes and devices
+- **Extensible Architecture**: Modular design for easy addition of new visualization types and data sources
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Python 3.8 or later
+- SQLite database (Chinook sample database included)
+- OpenAI API key for AI capabilities
+- Required Python packages (see Installation)
+
+## ⚙️ Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd AI-DATA-VISUALIZATION-ASSISTANT
+   ```
+
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   # On Windows:
+   venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Set up your environment variables:
+   Create a `.env` file in the root directory with:
+   ```
+   OPENAI_API_KEY=your_openai_api_key
+   ```
+
+## 🗃️ Database Setup
+
+The project uses SQLite with the Chinook sample database by default. The database file `chinook.db` is already included in the repository.
+
+### Database Schema
+
+The Chinook database includes tables like:
+- `artists`
+- `albums`
+- `tracks`
+- `customers`
+- `invoices`
+- `invoice_items`
+- `playlists`
+- `playlist_track`
+- `employees`
+- `genres`
+- `media_types`
+
+## 🚀 Running the Application
+
+1. Start the Streamlit application:
+   ```bash
+   streamlit run src/chatbot_ui.py
+   ```
+
+2. Open your browser and navigate to `http://localhost:8501`
+
+3. Start asking questions about your data in natural language, such as:
+   - "Show me total sales by country"
+   - "What are the top 10 selling artists?"
+   - "Display a pie chart of genre distribution"
+   - "Generate an ER diagram of the database"
+
+## 📊 Example Queries
+
+- "Show total sales by country"
+- "What are the top 10 selling artists?"
+- "Display a pie chart of genre distribution"
+- "Show me the relationship between track length and popularity"
+- "Generate an ER diagram of the database"
+- "What's the average invoice total by country?"
+- "Show me monthly sales trends over time"
+
+## 🏗️ Project Structure
+
 ```
-pip install streamlit langchain openai google-cloud-bigquery pandas "langchain-google-community[bigquery]" python-dotenv langchain_openai plotly
+AI-DATA-VISUALIZATION-ASSISTANT/
+├── .streamlit/           # Streamlit configuration
+├── images/               # Static images and assets
+├── src/                  # Source code
+│   ├── core/             # Core functionality
+│   │   ├── viz_tools.py  # Visualization utilities
+│   │   └── gen_bi_react_agent.py  # AI agent implementation
+│   ├── utils/            # Utility functions
+│   └── chatbot_ui.py     # Main Streamlit application
+├── tests/                # Test files
+├── .env                  # Environment variables
+├── chinook.db            # Sample SQLite database
+├── main.py               # Legacy entry point
+├── README.md             # This file
+└── requirements.txt      # Project dependencies
 ```
 
-## Setting Up the Database
+## 🤝 Contributing
 
-```
-CREATE TABLE `your_project.your_dataset.customer` (
-    customer_key STRING NOT NULL,
-    first_name STRING,
-    last_name STRING,
-    source_system_name STRING,
-    dob DATE,
-    gender STRING,
-    create_timestamp TIMESTAMP
-);
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-CREATE TABLE `your_project.your_dataset.customer_address` (
-    customer_key STRING NOT NULL,
-    address_key STRING NOT NULL
-);
+## 📄 License
 
-CREATE TABLE `your_project.your_dataset.address` (
-    address_key STRING NOT NULL,
-    full_address STRING,
-    state STRING,
-    country STRING,
-    latitude STRING,
-    longitude STRING
-);
-```
-
-## Running the Application
-Start the Streamlit app by running:
-
-```
-streamlit run main.py
-```
-
-## Example Queries
-- "How many customers do we have in each state?"
-- "Show me the customer registration trends over the last year."
-- "What is the gender distribution of our customers?"
-- "Where are our customers located?"
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
